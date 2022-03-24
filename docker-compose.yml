@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  bot:
+    build:
+        context: .
+        dockerfile: Dockerfile_ytm
+    container_name: ytmusic_bot
+    volumes:
+      - /work_ytm:/work
+    restart: always
+    tty: true

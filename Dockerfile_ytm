@@ -1,0 +1,27 @@
+FROM ubuntu
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Setup Ubuntu
+RUN apt -qq update
+RUN apt upgrade -y
+
+# Set Workdir
+ENV WORKPATH /work
+WORKDIR ${WORKPATH}
+
+# Install Python & Modules
+RUN apt install -y python3 python3-pip
+RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+
+#RUN apt install -y git
+#RUN pip install git+https://github.com/Pycord-Development/pycord
+RUN pip install -U py-cord --pre
+RUN apt install -y ffmpeg
+RUN pip install requests
+RUN pip install PyNaCl
+RUN pip install ytmusicapi
+RUN pip install youtube_dl
+
+ENTRYPOINT ["python3", "YTMusic_Bot.py"]
